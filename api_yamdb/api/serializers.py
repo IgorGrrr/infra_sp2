@@ -74,7 +74,7 @@ class ReviewSerializer(serializers.ModelSerializer):
                     title=title, author=request.user
             ).exists():
                 raise serializers.ValidationError(
-                    f"Вы уже оставляли отзыв к этому произведению"
+                    'Вы уже оставляли отзыв к этому произведению'
                 )
         return data
 
