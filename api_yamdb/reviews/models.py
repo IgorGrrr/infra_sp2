@@ -145,13 +145,12 @@ class Review(models.Model):
     )
     pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
     score = models.PositiveIntegerField(
-        verbose_name = 'оценка',
+        verbose_name='оценка',
         validators=[
             MaxValueValidator(10, 'Оценка не может быть меньше 10'),
             MinValueValidator(1, 'Оценка не может быть меньше 1')
         ]
     )
-
 
     class Meta:
         ordering = ['id']

@@ -1,12 +1,11 @@
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
-from rest_framework import permissions, viewsets, status, filters, serializers
+from rest_framework import permissions, viewsets, status, filters
 from rest_framework.response import Response
 from django.db.models import Avg
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import (IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
-from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework.decorators import action, api_view, permission_classes
@@ -103,7 +102,7 @@ def email_verification(request):
 class CategoryGenreViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
                            mixins.DestroyModelMixin, viewsets.GenericViewSet):
     permission_classes = [AdminReadOnly,]
-    filter_backends = (filters.SearchFilter,)
+    filter_backends = (filters.SearchFilter, )
     search_fields = ('name',)
     lookup_field = 'slug'
 
