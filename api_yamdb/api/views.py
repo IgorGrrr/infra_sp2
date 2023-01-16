@@ -101,9 +101,9 @@ def email_verification(request):
 
 class CategoryGenreViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
                            mixins.DestroyModelMixin, viewsets.GenericViewSet):
-    permission_classes = [AdminReadOnly,]
+    permission_classes = [AdminReadOnly, ]
     filter_backends = (filters.SearchFilter, )
-    search_fields = ('name',)
+    search_fields = ('name', )
     lookup_field = 'slug'
 
 
