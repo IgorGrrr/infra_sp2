@@ -1,7 +1,7 @@
-from rest_framework import serializers
-from reviews.models import Review, Comment, Category, Genre, Title
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
+from rest_framework import serializers
+from reviews.models import Category, Comment, Genre, Review, Title
 
 User = get_user_model()
 
@@ -10,14 +10,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("username", "email")
-
-    def save(self):
-        user = User(
-            username=self.validated_data["username"],
-            email=self.validated_data["email"],
-        )
-        user.save()
-        return user
 
     def validate_username(self, value):
         if value == "me":
